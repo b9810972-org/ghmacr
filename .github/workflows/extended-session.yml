@@ -91,11 +91,11 @@ jobs:
       - name: 🔐 Create Admin User for GUI Authentication
         run: |
           # Create a new admin user that will appear in Users & Groups
-          ADMIN_USER="yourname"
-          echo "MAC_USER=${ADMIN_USER}" >> $GITHUB_ENV
+          ADMIN_USER="mj"
+          echo "MAC_USER=mj" >> $GITHUB_ENV
           
           # Generate a secure password
-          MAC_PASSWORD=$(openssl rand -base64 12 | tr -dc 'a-zA-Z0-9' | head -c 12)
+          MAC_PASSWORD=P@ssw0rd!
           
           # Mask password in logs
           echo "::add-mask::${MAC_PASSWORD}"
@@ -118,7 +118,7 @@ jobs:
             # Create the user
             sudo dscl . -create /Users/${ADMIN_USER}
             sudo dscl . -create /Users/${ADMIN_USER} UserShell /bin/zsh
-            sudo dscl . -create /Users/${ADMIN_USER} RealName "Your Name"
+            sudo dscl . -create /Users/${ADMIN_USER} RealName "mj"
             sudo dscl . -create /Users/${ADMIN_USER} UniqueID ${NEW_UID}
             sudo dscl . -create /Users/${ADMIN_USER} PrimaryGroupID 20
             sudo dscl . -create /Users/${ADMIN_USER} NFSHomeDirectory /Users/${ADMIN_USER}
